@@ -1,148 +1,41 @@
-// import 'package:coba_flutter/pages/product.dart';
-// import 'package:coba_flutter/utilities/fun_collection.dart';
-// import 'package:flutter/material.dart';
-
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: Scaffold(
-//         body: Column(
-//           children: [
-//             Container(
-//               width: MediaQuery.of(context).size.width * 1,
-//               height: 250,
-//               child: ClipRRect(
-//                 child: Image.network(
-//                   'https://images.unsplash.com/photo-1672717899523-2182b3656f1a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-//                   width: 10,
-//                   height: 10,
-//                   fit: BoxFit.fitWidth,
-//                 ),
-//               ),
-//             ),
-//             Container(
-//               margin: EdgeInsets.only(top: 10),
-//               width: MediaQuery.of(context).size.width,
-//               height: 50,
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                 children: [
-//                   InkWell(
-//                     onTap: () {
-//                       // Navigasi ke halaman baru
-//                       Navigator.push(
-//                         context,
-//                         MaterialPageRoute(
-//                           builder: (context) => NewPage(title: 'History Page'),
-//                         ),
-//                       );
-//                     },
-//                     child: Container(
-//                       decoration: BoxDecoration(
-//                         color: Color(0xFF1C8A66),
-//                         shape: BoxShape.circle,
-//                       ),
-//                       padding: EdgeInsets.all(10.0),
-//                       child: Icon(
-//                         Icons.history,
-//                         color: Colors.white,
-//                         size: 30.0,
-//                       ),
-//                     ),
-//                   ),
-//                   InkWell(
-//                     onTap: () {
-//                       Navigator.push(
-//                         context,
-//                         MaterialPageRoute(
-//                           builder: (context) =>
-//                               NewPage(title: 'Shopping Cart Page'),
-//                         ),
-//                       );
-//                     },
-//                     child: Container(
-//                       decoration: BoxDecoration(
-//                         color: Color(0xFF1C8A66),
-//                         shape: BoxShape.rectangle,
-//                       ),
-//                       padding: EdgeInsets.all(10.0),
-//                       child: Icon(
-//                         Icons.shopping_cart,
-//                         color: Colors.white,
-//                         size: 30.0,
-//                       ),
-//                     ),
-//                   ),
-//                   InkWell(
-//                     onTap: () {
-//                       Navigator.push(
-//                         context,
-//                         MaterialPageRoute(
-//                           builder: (context) => NewPage(title: 'Business Page'),
-//                         ),
-//                       );
-//                     },
-//                     child: Container(
-//                       decoration: BoxDecoration(
-//                         color: Color(0xFF1C8A66),
-//                         shape: BoxShape.rectangle,
-//                       ),
-//                       padding: EdgeInsets.all(10.0),
-//                       child: Icon(
-//                         Icons.business,
-//                         color: Colors.white,
-//                         size: 30.0,
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//             SizedBox(height: 10), // Add some space between sections
-//             Expanded(
-//               child: ListView.builder(
-//                 itemCount: ProductList().length,
-//                 itemBuilder: (context, index) {
-//                   return ListTile(
-//                       // title: Text([index]),
-//                       );
-//                 },
-//               ),
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'history.dart';
 import 'shopping_cart.dart';
 import 'business.dart';
 
+class Product {
+  final String name;
+  final String description;
+  final String imageUrl;
+  final String price;
+
+  Product({
+    required this.name,
+    required this.description,
+    required this.imageUrl,
+    required this.price,
+  });
+}
+
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  final List<String> names = [
-    'Bapakku',
-    'Nelayan',
-    'Juragan',
-    'Peternakan',
-    'Ibukku',
-    'Sayang',
-    'Kamu',
-    'Suka',
-    'Lotisan',
-    'Joko',
-    'Kiki',
-    'Lina',
-    'Mira'
+
+  final List<Product> products = [
+    Product(
+      name: 'Servis Lengkap',
+      description:
+          'Membersihkan CVT menggunakan cairan khusus, ganti oli, membersihkan Throttle Body dan ganti oli',
+      imageUrl:
+          'https://cdn.antaranews.com/cache/1200x800/2022/04/28/IMG-20220428-WA0002_7.jpg', // Ganti dengan URL gambar yang sesuai
+      price: 'Rp. 150.000',
+    ),
+    Product(
+      name: 'Isi Angin',
+      description: 'Isi Angin Ban dengan Nitrogen.',
+      imageUrl:
+          'https://img.icarcdn.com/mobil123-news/body/68139-ban_motor.jpg', // Ganti dengan URL gambar yang sesuai
+      price: 'Rp. Gratis',
+    )
   ];
 
   @override
@@ -155,7 +48,7 @@ class HomePage extends StatelessWidget {
             height: 250,
             child: ClipRRect(
               child: Image.network(
-                'https://images.unsplash.com/photo-1672717899523-2182b3656f1a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://planetban.com/promo-store/storage/outlet/d50fc14bc917a01fb9e5bc98f60013d8.png',
                 fit: BoxFit.fitWidth,
               ),
             ),
@@ -176,7 +69,7 @@ class HomePage extends StatelessWidget {
                   },
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Color(0xFF1C8A66),
+                      color: Color(0xFF2B4CA2),
                       shape: BoxShape.circle,
                     ),
                     padding: const EdgeInsets.all(10.0),
@@ -197,7 +90,7 @@ class HomePage extends StatelessWidget {
                   },
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Color(0xFF1C8A66),
+                      color: Color(0xFF2B4CA2),
                       shape: BoxShape.rectangle,
                     ),
                     padding: const EdgeInsets.all(10.0),
@@ -217,7 +110,7 @@ class HomePage extends StatelessWidget {
                   },
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Color(0xFF1C8A66),
+                      color: Color(0xFF2B4CA2),
                       shape: BoxShape.rectangle,
                     ),
                     padding: const EdgeInsets.all(10.0),
@@ -234,15 +127,102 @@ class HomePage extends StatelessWidget {
           const SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
-              itemCount: names.length,
+              itemCount: products.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(names[index]),
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailPage(
+                          product: products[index],
+                        ),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.network(
+                            products[index].imageUrl,
+                            height: 150,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            products[index].name,
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(products[index].description),
+                          const SizedBox(height: 4),
+                          Text(
+                            products[index].price,
+                            style: const TextStyle(
+                                color: Colors.green, fontSize: 16),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 );
               },
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class DetailPage extends StatelessWidget {
+  final Product product;
+
+  const DetailPage({super.key, required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(product.name),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.network(product.imageUrl),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    product.price,
+                    style: const TextStyle(color: Colors.green, fontSize: 20),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    product.description,
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'product.dart';
 import 'home.dart';
+import 'user_pages.dart'; // Import UserPage
 
 class Navbar extends StatefulWidget {
   Navbar({super.key});
@@ -20,7 +21,11 @@ class _NavbarState extends State<Navbar> {
     });
   }
 
-  final List _pages = [HomePage(), ProductList()];
+  final List _pages = [
+    HomePage(),
+    ProductList(),
+    UserPage(), // Tambahkan UserPage ke daftar halaman
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,8 @@ class _NavbarState extends State<Navbar> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.production_quantity_limits), label: 'product')
+              icon: Icon(Icons.production_quantity_limits), label: 'Product'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'User'), // Item baru untuk UserPage
         ],
       ),
     );
